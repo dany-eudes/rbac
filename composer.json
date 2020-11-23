@@ -1,17 +1,21 @@
 {
     "name": "dcn/rbac",
-    "description": "Powerful RBAC package for Laravel 5.1",
+    "description": "Powerful RBAC package for Laravel 8.*",
     "keywords": ["roles", "permissions", "rbac", "auth", "laravel", "illuminate"],
     "license": "MIT",
     "authors": [
         {
             "name": "Will G",
             "email": "willg@cloudmy.it"
+        },
+        {
+            "name": "Ryan Wang",
+            "email": "ryan@shaodangjia.com"
         }
     ],
     "require": {
-        "php": ">=5.5.9",
-        "illuminate/support": "~5.0"
+        "php": "^7.3|^8.0",
+        "illuminate/support": "^8.0"
     },
     "autoload": {
         "psr-0": {
