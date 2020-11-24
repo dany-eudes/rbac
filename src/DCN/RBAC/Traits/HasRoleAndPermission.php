@@ -192,7 +192,7 @@ trait HasRoleAndPermission
             return $role == $value->id || Str::is($role, $value->slug);
         });
     }
-    
+
     /**
      * Check if the user has a permission or permissions.
      *
@@ -424,14 +424,14 @@ trait HasRoleAndPermission
      */
     public function __call($method, $parameters)
     {
-        if (starts_with($method, 'roleIs')) {
-            return $this->roleIs(snake_case(substr($method, 6), config('roles.separator')));
-        } elseif (starts_with($method, 'may')) {
-            return $this->may(snake_case(substr($method, 3), config('roles.separator')));
-        } elseif (starts_with($method, 'allowed')) {
-            return $this->allowed(snake_case(substr($method, 7), config('roles.separator')), $parameters[0], (isset($parameters[1])) ? $parameters[1] : true, (isset($parameters[2])) ? $parameters[2] : 'user_id');
-        } elseif (starts_with($method, 'hasRole')) {
-            return $this->hasRole(isset($parameters[0]) ? $parameters[0] : snake_case(substr($method, 7), config('roles.separator')));
+        if (Str::startsWith($method, 'roleIs')) {
+            return $this->roleIs(Str::of(substr($method, 6))->snake(config('roles.separator')));
+        } elseif (Str::startsWith($method, 'may')) {
+            return $this->may(Str::of(substr($method, 3))->snake(config('roles.separator')));
+        } elseif (Str::startsWith($method, 'allowed')) {
+            return $this->allowed(Str::of(substr($method, 7))->snake(config('roles.separator')), $parameters[0], (isset($parameters[1])) ? $parameters[1] : true, (isset($parameters[2])) ? $parameters[2] : 'user_id');
+        } elseif (Str::startsWith($method, 'hasRole')) {
+            return $this->hasRole(isset($parameters[0]) ? $parameters[0] : Str::of(substr($method, 7))->snake(config('roles.separator')));
         }
 
         return parent::__call($method, $parameters);
